@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QRIS Dinamis — DANA</title>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>▦</text></svg>" />
+</head>
+<body>
+  <main class="bungkus">
+    <header>
+      <h1>QRIS Dinamis</h1>
+      <p class="sub">Buat tagihan QRIS dengan nominal otomatis lewat API DANA.</p>
+    </header>
+
+    <div id="peringatan" class="peringatan" hidden>
+      DANA belum dikonfigurasi di server ini. Isi variabel <code>DANA_*</code> lalu deploy ulang.
+    </div>
+
+    <section class="kartu">
+      <form id="form">
+        <label>
+          Nominal (Rp)
+          <input id="nominal" name="nominal" type="number" inputmode="numeric" min="1" max="50000000" step="1" placeholder="150000" required />
+        </label>
+        <label>
+          Keterangan
+          <input id="keterangan" name="keterangan" type="text" maxlength="200" placeholder="Pendaftaran Poli Anak" />
+        </label>
+        <div class="tombol-baris">
+          <button type="submit" id="tombol">Buat QRIS</button>
+        </div>
+      </form>
+      <p id="galat" class="galat" hidden></p>
+    </section>
+
+    <section id="hasil" class="kartu hasil" hidden>
+      <div class="qr">
+        <img id="gambar" alt="Kode QRIS" width="280" height="280" />
+      </div>
+      <div class="rincian">
+        <div class="status" id="status">Menunggu pembayaran</div>
+        <dl>
+          <dt>Nominal</dt><dd id="r-nominal">—</dd>
+          <dt>Referensi</dt><dd id="r-referensi">—</dd>
+          <dt>Berlaku sampai</dt><dd id="r-kedaluwarsa">—</dd>
+        </dl>
+        <p class="petunjuk">Pindai dengan aplikasi apa pun yang mendukung QRIS. Halaman ini memeriksa status otomatis.</p>
+      </div>
+    </section>
+
+    <section class="kartu">
+      <h2>Tagihan terakhir</h2>
+      <table>
+        <thead>
+          <tr><th>Referensi</th><th>Nominal</th><th>Status</th><th>Dibuat</th></tr>
+        </thead>
+        <tbody id="riwayat">
+          <tr><td colspan="4" class="kosong">Belum ada tagihan.</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <script src="/app.js" type="module"></script>
+</body>
+</html>

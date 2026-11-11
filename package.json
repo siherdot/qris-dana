@@ -1,0 +1,17 @@
+{
+  "name": "dana-qris",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Layanan QRIS dinamis DANA: buat tagihan bernominal, tampilkan QR, terima webhook.",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test/uji.mjs"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.4"
+  }
+}
