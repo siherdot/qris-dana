@@ -1,4 +1,4 @@
-# dana-qris
+# qris-dana
 
 Layanan kecil untuk membuat **QRIS dinamis** (nominal otomatis) lewat API DANA,
 menampilkan QR-nya, dan menerima status pembayaran dari webhook DANA.

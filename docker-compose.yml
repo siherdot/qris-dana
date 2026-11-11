@@ -1,7 +1,7 @@
 services:
   qris:
     build: .
-    container_name: dana-qris
+    container_name: qris-dana
     restart: unless-stopped
     ports:
       - "8090:3000"
