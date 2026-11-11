@@ -6,6 +6,11 @@ ENV NODE_ENV=production \
 
 WORKDIR /app
 
+# curl dipakai healthcheck Coolify (image slim tidak punya curl/wget).
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends curl \
+    && rm -rf /var/lib/apt/lists/*
+
 COPY package.json package-lock.json ./
 RUN npm ci --omit=dev && npm cache clean --force
 
